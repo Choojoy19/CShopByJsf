@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Cart</title>
+</h:head>
+<body>
+<p:dataTable var="order" value="#{cart.orders}">
+    <p:column headerText="Ваши заказы">
+        <h:outputText value="#{order}" />
+    </p:column>
+    <p:column>
+        <f:facet name="header">Редактировать</f:facet>
+        <h:commandButton action = "#{orderController.edit}" value="Update" class="btn btn-primary">
+        </h:commandButton>
+    </p:column>
+    <p:column>
+        <f:facet name="header">Удалить</f:facet>
+        <h:commandButton action = "#{orderController.delete}" value="Delete" class="btn btn-danger">
+        </h:commandButton>
+    </p:column>
+</p:dataTable>
+</body>
+</html>

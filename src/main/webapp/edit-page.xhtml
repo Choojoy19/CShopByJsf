@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+    <title>Order</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h2>Заказ</h2>
+
+        <!-- <c:forEach var="coffee" items="#{coffeeController.coffees}"> -->
+        <!-- </c:forEach> -->
+        <p:outputLabel value="Выберите сорт кофе" />
+        <p:selectOneMenu value="#{coffeeController.coffeeId}">
+            <f:selectItems value="#{coffeeController.coffees}" var="coffee" itemValue="#{coffee.id}" itemLabel="#{coffee.item}" />
+        </p:selectOneMenu>
+
+        <br/>
+        <br/>
+        <h:panelGrid columns="1" style="margin-bottom: 10px">
+            <p:outputLabel value="Количество килограмм:" for="weight" />
+            <p:inputText id="weight" value="#{order.weight}" />
+            <p:slider for="weight" minValue="0.1" maxValue="7.1" step="0.1" />
+        </h:panelGrid>
+
+
+        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+            <p:outputLabel for="delivery" value="Доставка:" />
+            <p:selectOneRadio id="delivery" value="#{order.courierDelivery}" unselectable="true">
+                <f:selectItem itemLabel="Курьером" itemValue="true" />
+                <f:selectItem itemLabel="Самовывоз" itemValue="false" />
+            </p:selectOneRadio>
+        </h:panelGrid>
+        <p:outputLabel for="orderDate" value="Дата доставки:" />
+        <p:calendar id="orderDate" value="#{order.orderDate}"  navigator="true" pattern="yyyy-MMM-dd" />
+        <br/>
+        <br/>
+        <p:outputLabel for="fromTime" value="Время доставки с "/>
+        <p:calendar id="fromTime" value="#{order.fromTime}" timeOnly="true" pattern="HH:mm"/>
+        <p:outputLabel for="toTime" value=" по "/>
+        <p:calendar id="toTime" value="#{order.toTime}" timeOnly="true" pattern="HH:mm"/>
+        <br/>
+        <br/>
+        <p:commandButton value="Создать заказ" action="start-page">
+            <!-- <p:collector value="#{cart.order}" addTo="#{cart.orders}"  unique="true"/>-->
+        </p:commandButton>
+    </h:form>
+</h:body>
+</html>

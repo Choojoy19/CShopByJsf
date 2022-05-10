@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Coffee shop</title>
+</h:head>
+
+<h:body>
+    <p:panel header="Coffee Shop"/>
+
+    <h:form style="position: absolute; left: 0; top: 200px; width: 50%;">
+
+        <p:panel header="Сделать заказ">
+            <h:panelGrid columns="2" cellpadding="4">
+                <p:commandButton value="Перейти к заказу"  action="order-page.xhtml" />
+            </h:panelGrid>
+        </p:panel>
+
+        </h:form>
+
+    <h:form style="position: absolute; right: 0; top: 200px; width: 50%;">
+
+        <p:panel header="Редактировать свои заказы">
+            <h:panelGrid columns="2" cellpadding="4">
+                <h:outputText value="Количество Ваших заказов: " />
+                <p:inputText value="#{cart.count}" />
+
+               <p:commandButton value="Перейти" action="cart-page" />
+            </h:panelGrid>
+        </p:panel>
+
+
+    </h:form>
+
+</h:body>
+</html>
